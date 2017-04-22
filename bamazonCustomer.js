@@ -13,9 +13,8 @@ var connection = mysql.createConnection({
 
 connection.connect(function(err) {
   if (err) throw err;
-  // console.log("connected as id " + connection.threadId);
 });
-
+// Show how much it's going to cost to get the item selected
 connection.query("SELECT * FROM products", function(err, res) {
   for (var i = 0; i < res.length; i++) {
     console.log(res[i].id + " | " + res[i].product_name + " | " + res[i].department_name + " | " + res[i].price + " | " + res[i].stock_quantity);
@@ -23,7 +22,7 @@ connection.query("SELECT * FROM products", function(err, res) {
   console.log("-----------------------------------");
 });
 
-
+// prompts
 var runSearch = function() {
   inquirer.prompt([
     {

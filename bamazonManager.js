@@ -27,10 +27,12 @@ var start = function(){
     }
   ]).then(function(answer) {
     // console.log("it worked");
+    // What to do when manager selects View Products for Sale
     if (answer.Menu === "View Products for Sale"){
     connection.query("SELECT * FROM products", function(err,res){
       console.log(res);
     });
+    //// What to do when manager selects View Low Inventory
   }if (answer.Menu === "View Low Inventory"){
     connection.query("SELECT * FROM products WHERE stock_quantity=?", [0], function(err,res){
 
@@ -38,7 +40,7 @@ var start = function(){
       console.log(res);
     });
 
-
+// What to do when manager selects New Item
   }if (answer.Menu === "New Item"){
     inquirer.prompt([
       {
@@ -75,7 +77,7 @@ var start = function(){
       })
     })
 
-
+// What to do when manager selects Add to Inventory
   }if (answer.Menu === "Add to Inventory"){
     inquirer.prompt([
       {
