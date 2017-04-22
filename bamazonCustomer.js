@@ -37,10 +37,16 @@ var runSearch = function() {
     message: "How many do you want?"
   }
   ]).then(function(answer) {
+
+
     connection.query("SELECT * FROM products WHERE id=?", [answer.Item], function(err, res) {
     for (var i = 0; i < res.length; i++) {
+      if(res[i].stock_quantity < answer.Quantity){
+        console.log("Insufficient Quantity!");
+      }else
       console.log(answer.Quantity + " | " + res[i].product_name + " | "  + "$"+ (res[i].price * answer.Quantity));
     }
+
   });
 
   })
